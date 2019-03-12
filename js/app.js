@@ -110,9 +110,17 @@ Promise.all(urls.map(url => fetch(url)))
     articleContent[i].querySelector('h3').innerText = newsArrays[a[i]].title
     articleContent[i].querySelector('a').href = newsArrays[a[i]].url
     articleContent[i].querySelector('a').target = "_blank"
+    articleContent[i].querySelector('a').className = "popUpWindow"
     articleContent[i].querySelector('h6').innerText = newsArrays[a[i]].content
     image[i].querySelector('img').src = newsArrays[a[i]].image
   }
+   //open popUp Page for article
+   const pageLink = document.querySelectorAll('.popUpWindow')
+   Array.from(pageLink).forEach(function(link){
+   link.addEventListener('click', function(e){
+     window.open(e.target.parentElement.href,'_blank','height=300px, width=700px')
+     })
+   })
   //here start load page after scorill it down after 20 news.
   let j = 0
   $(document).scroll(function(){
@@ -164,9 +172,17 @@ Promise.all(urls.map(url => fetch(url)))
         articleContent[i].querySelector('h3').innerText = newsArrays[a[i]].title
         articleContent[i].querySelector('a').href = newsArrays[a[i]].url
         articleContent[i].querySelector('a').target = "_blank"
+        articleContent[i].querySelector('a').className = "popUpWindow"
         articleContent[i].querySelector('h6').innerText = newsArrays[a[i]].content
         image[i].querySelector('img').src = newsArrays[a[i]].image
       }
+      //open popUp Page for article
+      const pageLink = document.querySelectorAll('.popUpWindow')
+      Array.from(pageLink).forEach(function(link){
+      link.addEventListener('click', function(e){
+        window.open(e.target.parentElement.href,'_blank','height=300px, width=700px')
+        })
+      })
     }
   }
 })
@@ -225,10 +241,18 @@ newNews[0].addEventListener('click', function(e) {
           articleContent[i].querySelector('h3').innerText = result.articles[i].title
           articleContent[i].querySelector('a').href = result.articles[i].url
           articleContent[i].querySelector('a').target = "_blank"
+          articleContent[i].querySelector('a').className = "popUpWindow"
           articleContent[i].querySelector('h6').innerText = result.articles[i].content
           image[i].querySelector('img').src = result.articles[i].urlToImage
         }
-
+        //open popUp Page for article
+        const pageLink = document.querySelectorAll('.popUpWindow')
+        Array.from(pageLink).forEach(function(link){
+        link.addEventListener('click', function(e){
+          console.log(e.target.parentElement.href)
+          window.open(e.target.parentElement.href,'_blank','height=300px, width=700px')
+          })
+        })
       },
       error: function(error){
         console.log(`Error ${error}`)
@@ -287,11 +311,18 @@ newNews2[0].addEventListener('click', function(e) {
           articleContent[i].querySelector('h3').innerText = result.results[i].title
           articleContent[i].querySelector('a').href = result.results[i].url
           articleContent[i].querySelector('a').target = "_blank"
+          articleContent[i].querySelector('a').className = "popUpWindow"
           articleContent[i].querySelector('h6').innerText = result.results[i].abstract
           image[i].querySelector('img').src = result.results[i].thumbnail_standard
-          // console.log(result.articles[i].title)
         }
-
+        //open popUp Page for article
+        const pageLink = document.querySelectorAll('.popUpWindow')
+        Array.from(pageLink).forEach(function(link){
+        link.addEventListener('click', function(e){
+          console.log(e.target.parentElement.href)
+          window.open(e.target.parentElement.href,'_blank','height=300px, width=700px')
+          })
+        })
       },
       error: function(error){
         console.log(`Error ${error}`)
@@ -350,9 +381,18 @@ newNews3[0].addEventListener('click', function(e) {
           articleContent[i].querySelector('h3').innerText = result.response.results[i].webTitle
           articleContent[i].querySelector('a').href = result.response.results[i].webUrl
           articleContent[i].querySelector('a').target = "_blank"
+          articleContent[i].querySelector('a').className = "popUpWindow"
           articleContent[i].querySelector('h6').innerText = 'To read the article click here'
           image[i].querySelector('img').src = ""
         }
+        //open popUp Page for article
+        const pageLink = document.querySelectorAll('.popUpWindow')
+        Array.from(pageLink).forEach(function(link){
+          link.addEventListener('click', function(e){
+            console.log(e.target.parentElement.href)
+            window.open(e.target.parentElement.href,'_blank','height=300px, width=700px')
+            })
+        })
       },
       error: function(error){
         console.log(`Error ${error}`)
@@ -362,7 +402,7 @@ newNews3[0].addEventListener('click', function(e) {
   })
 })
 // (5)
-//reload the page to get show all news
+//reload the page to show all news
 function myFunction() {
   location.reload();
 }
@@ -396,4 +436,6 @@ searchInput.addEventListener('keyup', function(e){
     }
   })
 })
+
+
 
